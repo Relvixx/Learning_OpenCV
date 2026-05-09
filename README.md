@@ -46,6 +46,15 @@ Each script is a self-contained unit targeting a single concept, making the repo
 
 ---
 
+## Latest Updates
+
+| Date | Update | Details |
+|------|--------|---------|
+| **May 10, 2026** | Assignment #2 Completed | Interactive image drawing utility with shape support (line, circle, rectangle, text), color selection, and save functionality |
+| May 9, 2026 | Assignment #1 Completed | Grayscale image converter — load image, convert BGR to grayscale, save or display with user-selected file type |
+
+---
+
 ## Architecture
 
 <details>
@@ -65,7 +74,10 @@ learning_opencv/
 ├── lec_2.py                 # Drawing matrices and shapes
 ├── learaning_pixal.py       # PIL/NumPy pixel manipulation
 ├── haarcascade_frontalface_default.xml
-└── hand_landmarker.task
+├── hand_landmarker.task
+└── Assignments/
+    ├── Assignment_no_1.py           # First assignment task
+    └── assignment_no_2.py           # Image drawing utility (line, circle, rectangle, text)
 ```
 
 </details>
