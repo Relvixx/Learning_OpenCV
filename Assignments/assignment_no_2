@@ -1,0 +1,78 @@
+import cv2
+
+def get_color_input(shape_name):
+    color_input = input(f"Enter which color you want for {shape_name} (blue/green/red): ").lower()
+    if color_input == "blue":
+        return (255, 0, 0)
+    elif color_input == "green":
+        return (0, 255, 0)
+    elif color_input == "red":
+        return (0, 0, 255)
+    else:
+        print("Invalid color, defaulting to black.")
+        return (0, 0, 0)
+
+def show_image(window_name, image):
+    cv2.imshow(window_name, image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+def save_image(image):
+    choice = input("Do you want to save the image? (yes/no): ").lower()
+    if choice == "yes":
+        file_name = input("Enter your file name with extension (e.g. output.jpg): ")
+        cv2.imwrite(file_name, image)
+        print("✅ Your image has been saved successfully as", file_name)
+
+location = input("Enter your Image Location: ")
+img = cv2.imread(location)
+
+if img is None:
+    print("Error: Could not load image. Check the path.")
+    exit()
+
+resize_img = cv2.resize(img, (500, 500))
+
+print("What do you want to draw on your image?")
+draw = input("Options: line / circle / rectangle / text: ").lower()
+
+if draw == "line":
+    pt1 = tuple(map(int, input("Enter Point 1 (e.g. 200,300): ").split(',')))
+    pt2 = tuple(map(int, input("Enter Point 2 (e.g. 400,500): ").split(',')))
+    color = get_color_input("line")
+    thickness = int(input("Enter thickness: "))
+    cv2.line(resize_img, pt1, pt2, color, thickness)
+    show_image("Line", resize_img)
+    save_image(resize_img)
+
+elif draw == "rectangle":
+    pt1 = tuple(map(int, input("Enter Point 1 (e.g. 200,300): ").split(',')))
+    pt2 = tuple(map(int, input("Enter Point 2 (e.g. 400,500): ").split(',')))
+    color = get_color_input("rectangle")
+    thickness = int(input("Enter thickness: "))
+    cv2.rectangle(resize_img, pt1, pt2, color, thickness)
+    show_image("Rectangle", resize_img)
+    save_image(resize_img)
+
+elif draw == "circle":
+    center = tuple(map(int, input("Enter center (e.g. 200,300): ").split(',')))
+    radius = int(input("Enter radius: "))
+    color = get_color_input("circle")
+    thickness = int(input("Enter thickness: "))
+    cv2.circle(resize_img, center, radius, color, thickness)
+    show_image("Circle", resize_img)
+    save_image(resize_img)
+
+elif draw == "text":
+    text = input("Enter the text: ")
+    org = tuple(map(int, input("Enter text position (e.g. 200,300): ").split(',')))
+    fontFace = cv2.FONT_HERSHEY_SIMPLEX
+    fontScale = float(input("Enter font scale (e.g. 1.0): "))
+    color = get_color_input("text")
+    thickness = int(input("Enter thickness: "))
+    cv2.putText(resize_img, text, org, fontFace, fontScale, color, thickness)
+    show_image("Text", resize_img)
+    save_image(resize_img)
+
+else:
+    print("Invalid option selected.")
