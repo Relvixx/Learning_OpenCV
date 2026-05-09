@@ -9,7 +9,8 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 prefrenace = input("What do you want Save or Show")
 
 if(prefrenace=="save"):
-    cv2.imwrite("gray.png",gray)
+    file_type = input("which file type you want to save the image")
+    cv2.imwrite(f"gray.{file_type}",gray)
     print("your image has been save sucessfully")
 
 elif(prefrenace == "show"):
