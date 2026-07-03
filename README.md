@@ -14,7 +14,9 @@
  ╚██████╔╝██║     ███████╗██║ ╚████║╚██████╗ ╚████╔╝
   ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝ ╚═════╝  ╚═══╝
 ```
-
+</div>
+<br>
+<div align="center">
 <h1><b>Learning OpenCV — 90 Days Robotics Challenge</b></h1>
 
 <p><em>A progressive learning workspace for Computer Vision, image processing, and human body tracking.</em></p>
